@@ -35,7 +35,7 @@ o = {}
 t = {}
 s = {}
 for dish in dishes:
-##    print('11/', make_dict().keys())
+
     if dish in make_dict().keys():
         for ingredient in make_dict().get(dish):
 ##            print(ingredient)
@@ -49,12 +49,17 @@ for dish in dishes:
             n = dict(zip(l,m))
 ##            print('n:', n)
             if kk.count(k) == 1:
-##                print('kk_count:', kk.count(k))
+                print('kk_count:', kk.count(k))
                 t.update(o.fromkeys((k,), n))
     
             else:
-                m = (ingredient.get('measure'),
-                     (ingredient.get('quantity') + t.pop(k).get('quantity')) * person_count)
+                print('kk_count:', kk.count(k))
+##                (t.pop(k).get('quantity'))     уже умножено на число гостей
+                print(ingredient.get('quantity'))
+##              
+                m = (ingredient.get('measure'), ingredient.get('quantity')*person_count + (t.pop(k).get('quantity')))
+                print('m:', m)
+                
                 n = dict(zip(l,m))
                 t.update(o.fromkeys((k,), n))
 print('t:', t)
