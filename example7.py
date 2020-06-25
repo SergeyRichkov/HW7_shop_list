@@ -30,14 +30,39 @@ l = ['measure', 'quantity']
 
 n = {}
 o = {}
+p = {}
+q = {}
 for i in dishes:
     if i in make_dict().keys():
        for j in make_dict().get(i):
            m = []
-           k.append(j.get('ingredient_name'))
+           k = []
+           k = j.get('ingredient_name')
+           
            m = (j.get('measure'), j.get('quantity') * person_count)
-           n = dict(zip(l, m))
-print(o.fromkeys(k, n))
+           n = dict(zip(l,m))
+           p = o.fromkeys((k,0), n)
+           q.update(p)
+
+
+           
+##           print('k:', k)
+##           print('m:', m)
+##           print('l:', l)
+##           print('zip:', list(zip(l,m)))
+##           print('dict:', dict(zip(l,m)))
+##           print('p:', p)
+##           
+
+           
+print(q)
+           
+
+         
+
+
+
+
 
            
            
