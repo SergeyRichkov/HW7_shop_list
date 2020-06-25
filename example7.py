@@ -3,29 +3,22 @@ def make_dict():
         dish = {}
         dishes_dict = {}
         while True:
-            e = []
-            a = text.readline().rstrip()
-            if not a:
+            recipe = []
+            dish_name = text.readline().rstrip()
+            if not dish_name:
                 break
-            b = int(text.readline().rstrip())
-            c = ['ingredient_name', 'quantity', 'measure']
-            for i in range(b):
-                d = text.readline().rstrip().split(' | ')
-                for f in d:
-                    d[1] = int(d[1])
-                e.append(dict(zip(c, d)))
-                dishes_dict.update(dish.fromkeys((a,), e))
+            amount_of_ingredients = int(text.readline().rstrip())
+            dishes_keys = ['ingredient_name', 'quantity', 'measure']
+            for i in range(amount_of_ingredients):
+                each_ingredient_list = text.readline().rstrip().split(' | ')
+                for element in each_ingredient_list:
+                    each_ingredient_list[1] = int(each_ingredient_list[1])
+                recipe.append(dict(zip(dishes_keys, each_ingredient_list)))
+                dishes_dict.update(dish.fromkeys((dish_name,), recipe))
             text.readline()
     return dishes_dict
 
-make_dict()
-
-def get_shop_list_by_dishes(dishes, person_count):
-
-    
-##person_count = int(input('Введите количество гостей'))
-##dishes = input( 'Введите блюда через запятую' ).split(', ')
-
+def get_shop_list_by_dishes(dishes, person_count):  
     units = ['measure', 'quantity']
     current_ingredient = 0
     ingredients_list = []
