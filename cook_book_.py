@@ -49,6 +49,13 @@ def get_shop_list_by_dishes(dishes, person_count):
                     (current_ingredient,), how_much_units))
     print(shop_dict)
     return
-get_shop_list_by_dishes(['Омлет', 'Салат', 'Фахитос'], 2)
 
-  
+def input_data():
+    dishes = (input('Введите названия блюд с большой буквы'
+                    ' через запятую с пробелом:\n')).split(', ')
+    count_person = int(input('Bведите число гостей:\n'))
+    get_shop_list_by_dishes(dishes, count_person)
+    return
+
+input_data()                       
+
