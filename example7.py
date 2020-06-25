@@ -19,6 +19,7 @@ def make_dict():
 ##        print(dishes_dict )
     return dishes_dict
 
+make_dict()
 
 ##def get_shop_list_by_dishes(dishes, person_count):
 person_count = int(input('Введите количество гостей'))
@@ -26,90 +27,37 @@ dishes = input( 'Введите блюда через запятую' ).split(',
 ##print(dishes)
 
 k = []
+kk = []
 l = ['measure', 'quantity']
-
+p = []
 n = {}
 o = {}
-p = {}
-q = {}
-for i in dishes:
-    if i in make_dict().keys():
-       for j in make_dict().get(i):
-           m = []
-           k = []
-           k = j.get('ingredient_name')
-           
-           m = (j.get('measure'), j.get('quantity') * person_count)
-           n = dict(zip(l,m))
-           p = o.fromkeys((k,0), n)
-           q.update(p)
-
-
-           
-##           print('k:', k)
-##           print('m:', m)
-##           print('l:', l)
-##           print('zip:', list(zip(l,m)))
-##           print('dict:', dict(zip(l,m)))
-##           print('p:', p)
-##           
-
-           
-print(q)
-           
-
-         
-
-
-
-
-
-           
-           
-           
-               
-       
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+t = {}
+s = {}
+for dish in dishes:
+##    print('11/', make_dict().keys())
+    if dish in make_dict().keys():
+        for ingredient in make_dict().get(dish):
+##            print(ingredient)
+            m = []
+            k = ingredient.get('ingredient_name')
+##            print('k:', k)
+            kk.append(k)
+##            print('kk:', kk)
+            m = (ingredient.get('measure'), ingredient.get('quantity') * person_count)
+##            print('m:', m)
+            n = dict(zip(l,m))
+##            print('n:', n)
+            if kk.count(k) == 1:
+##                print('kk_count:', kk.count(k))
+                t.update(o.fromkeys((k,), n))
     
-##{'Омлет': [{'ingredient_name': 'Яйцо', 'quantity': 2, 'measure': 'шт'},
-##           {'ingredient_name': 'Молоко', 'quantity': 100, 'measure': 'мл'},
-##           {'ingredient_name': 'Помидор', 'quantity': 2, 'measure': 'шт'}],
-## 'Утка по-пекински': [{'ingredient_name': 'Утка', 'quantity': 1, 'measure': 'шт'},
-##                      {'ingredient_name': 'Вода', 'quantity': 2, 'measure': 'л'},
-##                      {'ingredient_name': 'Мед', 'quantity': 3, 'measure': 'ст.л'},
-##                      {'ingredient_name': 'Соевый соус', 'quantity': 60, 'measure': 'мл'}],
-## 'Запеченный картофель': [{'ingredient_name': 'Картофель', 'quantity': 1, 'measure': 'кг'},
-##                          {'ingredient_name': 'Чеснок', 'quantity': 3, 'measure': 'зубч'},
-##                          {'ingredient_name': 'Сыр гауда', 'quantity': 100, 'measure': 'г'}],
-## 'Фахитос': [{'ingredient_name': 'Говядина', 'quantity': 500, 'measure': 'г'},
-##             {'ingredient_name': 'Перец сладкий', 'quantity': 1, 'measure': 'шт'},
-##             {'ingredient_name': 'Лаваш', 'quantity': 2, 'measure': 'шт'},
-##             {'ingredient_name': 'Винный уксус', 'quantity': 1, 'measure': 'ст.л'},
-##             {'ingredient_name': 'Помидор', 'quantity': 2, 'measure': 'шт'}]}  
-##  
-
-
-
-            
-     
-       
+            else:
+                m = (ingredient.get('measure'),
+                     (ingredient.get('quantity') + t.pop(k).get('quantity')) * person_count)
+                n = dict(zip(l,m))
+                t.update(o.fromkeys((k,), n))
+print('t:', t)
+   
 
   
